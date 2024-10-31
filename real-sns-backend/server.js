@@ -16,13 +16,11 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error(err));
 
+app.use(express.json());
 app.use("/api/users", userRouter);
+
 app.use("/api/auth", authRouter);
 app.use("/api/posts", postRouter);
-
-app.get("/", (req, res) => {
-  res.send("Welcome to the real-time social media API");
-});
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
